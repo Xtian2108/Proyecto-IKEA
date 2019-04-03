@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.Experimental.XR;
+
 public class ArTapToPlaceObject : MonoBehaviour
 {
     private ARSessionOrigin arOrigin;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
+
     [SerializeField]
     private GameObject placementIndicator;  
     // Start is called before the first frame update
@@ -19,11 +22,11 @@ public class ArTapToPlaceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updatePlaacementPose();
-        upDatePlacemtOmdocator();
+        UpdatePlaacementPose();
+        UpDatePlacemtImdocator();
     }
 
-    private void upDatePlacemtOmdocator()
+    private void UpDatePlacemtImdocator()
     {
         if(placementPoseIsValid)
         {
@@ -36,16 +39,23 @@ public class ArTapToPlaceObject : MonoBehaviour
         }
     }
 
-    private void updatePlaacementPose()
+    private void UpdatePlaacementPose()
     {
-        var screenCenter = Camera.current.ScreenToViewportPoint(new Vector3(0.5f, 0.5f));
+        var screenCenter = Camera.current.ScreenToViewportPoint(new Vector3(0.5f,0.5f));
+        Debug.Log(screenCenter);
+
         var hits = new List<ARRaycastHit>();
-        arOrigin.Raycast(screenCenter, hits, UnityEngine.Experimental.XR.TrackableType.Planes);
+
+        arOrigin.Raycast(screenCenter, hits,TrackableType.Planes);
 
         placementPoseIsValid = hits.Count > 0;
         if (placementPoseIsValid)
         {
             placementPose = hits[0].pose;
+            var cameraForward = Camera.current.transform.position;
+            var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
+            placementPose.rotation = Quaternion.LookRotation(cameraBearing);
+
         }
 
     }
