@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/PortalDemo/PortalAnimationDemo.unity
+    guid: d518d01554b96694ea27aa6235a60325
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/OcclusionDemo/SurfaceOcclusionDemo.unity
+    guid: b574deb59bcc9814294c22ee8bbee403
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/AnchoringDemo/ObjectScalerDemo.unity
+    guid: d061ae136d41def42a7de5280fb26131
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/AnchoringDemo/AnchorUnanchorDemo.unity
+    guid: fd687dfe27e151f458e63ae8970b74c3
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/ColliderDemo/SurfaceColliderDemo.unity
+    guid: c754faf957eb3284f84fe7818b2ebe4d
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/AnchoringDemo/ObjectControllerDemo.unity
+    guid: d9abba600e4274f4ca734d64aa1ff49f
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/PortalDemo/PortalDoorDemo.unity
+    guid: f60ab492138c26c4094fe5a2bfe8a4b4
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/VisualizerDemo/SurfaceSaverDemo.unity
+    guid: bd93350c687709c4886205c7540fa889
+  - enabled: 0
+    path: Assets/MultiAR/DemoScenes/ImageAnchorDemo/ImageAnchorDemo.unity
+    guid: dd87115b3d6cf2140b7d1e07a29daa1c
+  - enabled: 0
+    path: Assets/UnityARKitPlugin/Examples/FaceTracking/FaceBlendshapeSloth.unity
+    guid: b9bc483a4023d4829a88ddc3adff3caf
+  m_configObjects: {}
