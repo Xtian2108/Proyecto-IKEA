@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/arCore/MultiAR/DemoScenes/AnchoringDemo/ObjectScalerDemo.unity
+    guid: d061ae136d41def42a7de5280fb26131
   - enabled: 1
     path: Assets/arCore/MultiAR/DemoScenes/AnchoringDemo/ObjectControllerDemo.unity
     guid: d9abba600e4274f4ca734d64aa1ff49f
@@ -12,11 +15,11 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/arCore/GoogleARCore/Examples/AugmentedImage/Scenes/AugmentedImage.unity
-    guid: be567d47d3ab94b3badc5b211f535a24
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/arCore/GoogleARCore/Examples/CloudAnchors/Scenes/CloudAnchors.unity
-    guid: 83fb41cc294e74bdea57537befa00ffc
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/arCore/MultiAR/DemoScenes/MultiSceneDemo/Scene1-ObjectControllerDemo.unity
     guid: 3206d27477ee5914396af542ab82bf21
