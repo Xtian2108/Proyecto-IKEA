@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class ObjectController : MonoBehaviour 
 
 {
-<<<<<<< HEAD
 
 
-=======
+
+
     public Animator anim;
->>>>>>> Modelador-3D
+
 	[Tooltip("Toggle for Model1.")]
 	public Toggle toggle1;
 
@@ -245,21 +245,21 @@ public class ObjectController : MonoBehaviour
 			{
 				// make it currently selected
 				currentModel = model1;
-<<<<<<< HEAD
+
                
 
             }
-=======
+
                 anim.SetBool("UpOrDown", true);       
 			}
->>>>>>> Modelador-3D
+
 			else if(currentModel == model1)
 			{
 				// if it was selected, reset the selection
 				currentModel = GetActiveModel();
 			}
 		}
-	}
+	
 
 	// invoked by the 2nd toggle
 	public void Toggle2Selected(bool bOn)

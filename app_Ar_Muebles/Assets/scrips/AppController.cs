@@ -13,7 +13,7 @@ public class AppController : MonoBehaviour
         
     }
 
-<<<<<<< HEAD
+
     public void DesactivarMenus(GameObject go)
     {
         for (int i = 0; i < menus.Length; i++)
@@ -22,9 +22,7 @@ public class AppController : MonoBehaviour
             go.SetActive(true);
         }
     }
-=======
-  
->>>>>>> Modelador-3D
+
 
     public void SwipeDown()
     {
