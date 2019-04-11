@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/prj/arCore/MultiAR/DemoScenes/AnchoringDemo/ObjectControllerDemo.unity
+    guid: d9abba600e4274f4ca734d64aa1ff49f
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 98167f6026643d840ae1bef8488db6c9
   m_configObjects: {}
