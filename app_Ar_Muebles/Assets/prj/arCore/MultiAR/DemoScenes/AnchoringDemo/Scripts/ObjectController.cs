@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectController : MonoBehaviour 
 {
+    public Animator anim;
 	[Tooltip("Toggle for Model1.")]
 	public Toggle toggle1;
 
@@ -238,6 +239,7 @@ public class ObjectController : MonoBehaviour
 			{
 				// make it currently selected
 				currentModel = model1;
+                anim.SetBool("UpOrDown", true);       
 			}
 			else if(currentModel == model1)
 			{
