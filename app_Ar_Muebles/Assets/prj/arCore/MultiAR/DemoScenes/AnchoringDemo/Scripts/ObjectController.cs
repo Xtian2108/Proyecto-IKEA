@@ -38,7 +38,15 @@ public class ObjectController : MonoBehaviour
             infoText.text = "Please select a model.";
         }
 
-        
+        if (toggles[0])
+        {
+            if (models[0])
+            {
+                models[0].position = new Vector3(0f, 0f, -10f);
+            }
+
+            toggles[0].isOn = true;
+        }
     }
 
     void Update()
