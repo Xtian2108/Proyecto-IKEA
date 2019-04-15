@@ -8,12 +8,7 @@ public class AppController : MonoBehaviour
     public bool b;
     public GameObject[] menus;
     
-    void Start()
-    {
-        
-    }
-
-  
+    
 
     public void SwipeDown()
     {

@@ -3,115 +3,131 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectController : MonoBehaviour 
+public class ObjectController : MonoBehaviour
 {
     public Animator anim;
-	[Tooltip("Toggle for Model1.")]
-	public Toggle toggle1;
+    [Tooltip("Toggle for Model1.")]
+    public Toggle[] toggles;
+    [Tooltip("Transform of Model1, if any.")]
+    public Transform[] models;
+   
 
-	[Tooltip("Toggle for Model2.")]
-	public Toggle toggle2;
+    [Tooltip("Whether the virtual model should rotate at the AR-camera or not.")]
+    public bool modelLookingAtCamera = true;
 
-	[Tooltip("Toggle for Model3.")]
-	public Toggle toggle3;
+    [Tooltip("Whether the virtual model should be vertical, or orthogonal to the surface.")]
+    public bool verticalModel = false;
 
-	[Tooltip("Transform of Model1, if any.")]
-	public Transform model1;
+    [Tooltip("UI-Text to show information messages.")]
+    public Text infoText;
 
-	[Tooltip("Transform of Model2, if any.")]
-	public Transform model2;
+    // reference to the MultiARManager
+    private MultiARManager arManager;
 
-	[Tooltip("Transform of Model3, if any.")]
-	public Transform model3;
-
-	[Tooltip("Whether the virtual model should rotate at the AR-camera or not.")]
-	public bool modelLookingAtCamera = true;
-
-	[Tooltip("Whether the virtual model should be vertical, or orthogonal to the surface.")]
-	public bool verticalModel = false;
-
-	[Tooltip("UI-Text to show information messages.")]
-	public Text infoText;
-
-	// reference to the MultiARManager
-	private MultiARManager arManager;
-
-	// currently selected model
-	private Transform currentModel = null;
+    // currently selected model
+    private Transform currentModel = null;
 
 
-	void Start () 
-	{
-		// get reference to MultiARManager
-		arManager = MultiARManager.Instance;
+    void Start()
+    {
+        // get reference to MultiARManager
+        arManager = MultiARManager.Instance;
 
-		if(infoText)
-		{
-			infoText.text = "Please select a model.";
-		}
+        if (infoText)
+        {
+            infoText.text = "Please select a model.";
+        }
 
-		// select the 1st toggle at start
-		if(toggle1)
-		{
-			if (model1) 
-			{
-				model1.position = new Vector3(0f, 0f, -10f);
-			}
+        
+    }
 
-			toggle1.isOn = true;
-		}
-	}
-	
-	void Update () 
-	{
-//		// don't consider taps over the UI
-//		if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-//			return;
+    void Update()
+    {
+        //		// don't consider taps over the UI
+        //		if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        //			return;
 
-		// check for tap
-		if (arManager && arManager.IsInitialized() && arManager.IsInputAvailable(true))
-		{
-			MultiARInterop.InputAction action = arManager.GetInputAction();
+        // check for tap
+        if (arManager && arManager.IsInitialized() && arManager.IsInputAvailable(true))
+        {
+            MultiARInterop.InputAction action = arManager.GetInputAction();
 
-			if (action == MultiARInterop.InputAction.Click || action == MultiARInterop.InputAction.Grip)
-			{
-				// check if there is a model selected
-				if(currentModel == null)
-				{
-					Debug.LogError("No model selected!");
-					return;
-				}
+            if (action == MultiARInterop.InputAction.Click || action == MultiARInterop.InputAction.Grip)
+            {
+                // check if there is a model selected
+                if (currentModel == null)
+                {
+                    Debug.LogError("No model selected!");
+                    return;
+                }
 
-				// update the currently selected model
-				currentModel = GetModelHit();
+                // update the currently selected model
+                currentModel = GetModelHit();
 
-				// raycast world
-				MultiARInterop.TrackableHit hit;
-				if(currentModel && arManager.RaycastToWorld(true, out hit))
-				{
-					// anchor the model if needed
-					if(currentModel.parent == null)
-					{
-						arManager.AnchorGameObjectToWorld(currentModel.gameObject, hit);
-					}
+                // raycast world
+                MultiARInterop.TrackableHit hit;
+                if (currentModel && arManager.RaycastToWorld(true, out hit))
+                {
+                    // anchor the model if needed
+                    if (currentModel.parent == null)
+                    {
+                        arManager.AnchorGameObjectToWorld(currentModel.gameObject, hit);
+                    }
 
-					// set the new position of the model
-					SetModelWorldPos(hit.point, !verticalModel ? hit.rotation : Quaternion.identity);
-				}
-			}
-		}
+                    // set the new position of the model
+                    SetModelWorldPos(hit.point, !verticalModel ? hit.rotation : Quaternion.identity);
+                }
+            }
+        }
 
-		// update the info
-		if(infoText)
-		{
-			infoText.text = currentModel ? "Selected: " + currentModel.gameObject.name : "No model selected";
-		}
+        // update the info
+        if (infoText)
+        {
+            infoText.text = currentModel ? "Selected: " + currentModel.gameObject.name : "No model selected";
+        }
 
-		// turn off the toggles, if the respective models are not active
-		UpdateToggleStatus(toggle1, model1);
-		UpdateToggleStatus(toggle2, model2);
-		UpdateToggleStatus(toggle3, model3);
-	}
+        // turn off the toggles, if the respective models are not active
+        UpdateToggleStatus(toggles[0], models[0]);
+        UpdateToggleStatus(toggles[1], models[1]);
+        UpdateToggleStatus(toggles[2], models[2]);
+        UpdateToggleStatus(toggles[3], models[3]);
+        UpdateToggleStatus(toggles[4], models[4]);
+        UpdateToggleStatus(toggles[5], models[5]);
+        UpdateToggleStatus(toggles[6], models[6]);
+        UpdateToggleStatus(toggles[7], models[7]);
+        UpdateToggleStatus(toggles[8], models[8]);
+        UpdateToggleStatus(toggles[9], models[9]);
+        UpdateToggleStatus(toggles[10], models[10]);
+        UpdateToggleStatus(toggles[11], models[11]);
+        UpdateToggleStatus(toggles[12], models[12]);
+        UpdateToggleStatus(toggles[13], models[13]);
+        UpdateToggleStatus(toggles[14], models[14]);
+        UpdateToggleStatus(toggles[15], models[15]);
+        UpdateToggleStatus(toggles[16], models[16]);
+        UpdateToggleStatus(toggles[17], models[17]);
+        UpdateToggleStatus(toggles[18], models[18]);
+        UpdateToggleStatus(toggles[19], models[19]);
+        UpdateToggleStatus(toggles[20], models[20]);
+        UpdateToggleStatus(toggles[21], models[21]);
+        UpdateToggleStatus(toggles[22], models[22]);
+        UpdateToggleStatus(toggles[23], models[23]);
+        UpdateToggleStatus(toggles[24], models[24]);
+        UpdateToggleStatus(toggles[25], models[25]);
+        UpdateToggleStatus(toggles[26], models[26]);
+        UpdateToggleStatus(toggles[27], models[27]);
+        UpdateToggleStatus(toggles[28], models[28]);
+        UpdateToggleStatus(toggles[29], models[29]);
+        UpdateToggleStatus(toggles[30], models[30]);
+        UpdateToggleStatus(toggles[31], models[31]);
+        UpdateToggleStatus(toggles[32], models[32]);
+        UpdateToggleStatus(toggles[33], models[33]);
+        UpdateToggleStatus(toggles[34], models[34]);
+        UpdateToggleStatus(toggles[35], models[35]);
+        UpdateToggleStatus(toggles[36], models[36]);
+      
+
+    }
+
 
 	// returns the model hit by the input ray, or current model if no other was hit
 	private Transform GetModelHit()
@@ -138,19 +154,152 @@ public class ObjectController : MonoBehaviour
 			}
 
 			// check for any of the models
-			if(rayHit.transform == model1)
+			if(rayHit.transform == models[0])
 			{
-				return model1;
+				return models[0];
 			}
-			else if(rayHit.transform == model2)
+			else if(rayHit.transform == models[1])
 			{
-				return model2;
+				return models[1];
 			}
-			else if(rayHit.transform == model3)
+			else if(rayHit.transform == models[2])
 			{
-				return model3;
+				return models[2];
 			}
-		}
+            else if (rayHit.transform == models[3])
+            {
+                return models[3];
+            }
+            else if (rayHit.transform == models[4])
+            {
+                return models[5];
+            }
+            else if (rayHit.transform == models[6])
+            {
+                return models[6];
+            }
+            else if (rayHit.transform == models[7])
+            {
+                return models[7];
+            }
+            else if (rayHit.transform == models[8])
+            {
+                return models[8];
+            }
+            else if (rayHit.transform == models[9])
+            {
+                return models[10];
+            }
+            else if (rayHit.transform == models[11])
+            {
+                return models[11];
+            }
+            else if (rayHit.transform == models[12])
+            {
+                return models[12];
+            }
+            else if (rayHit.transform == models[13])
+            {
+                return models[13];
+            }
+            else if (rayHit.transform == models[14])
+            {
+                return models[14];
+            }
+            else if (rayHit.transform == models[15])
+            {
+                return models[15];
+            }
+            else if (rayHit.transform == models[16])
+            {
+                return models[16];
+            }
+            else if (rayHit.transform == models[17])
+            {
+                return models[17];
+            }
+            else if (rayHit.transform == models[18])
+            {
+                return models[18];
+            }
+            else if (rayHit.transform == models[119])
+            {
+                return models[19];
+            }
+            else if (rayHit.transform == models[20])
+            {
+                return models[20];
+            }
+            else if (rayHit.transform == models[21])
+            {
+                return models[21];
+            }
+            else if (rayHit.transform == models[22])
+            {
+                return models[22];
+            }
+            else if (rayHit.transform == models[23])
+            {
+                return models[23];
+            }
+            else if (rayHit.transform == models[24])
+            {
+                return models[24];
+            }
+            else if (rayHit.transform == models[25])
+            {
+                return models[25];
+            }
+            else if (rayHit.transform == models[26])
+            {
+                return models[26];
+            }
+            else if (rayHit.transform == models[27])
+            {
+                return models[27];
+            }
+            else if (rayHit.transform == models[28])
+            {
+                return models[28];
+            }
+            else if (rayHit.transform == models[29])
+            {
+                return models[29];
+            }
+            else if (rayHit.transform == models[30])
+            {
+                return models[30];
+            }
+            else if (rayHit.transform == models[31])
+            {
+                return models[31];
+            }
+            else if (rayHit.transform == models[32])
+            {
+                return models[32];
+            }
+            else if (rayHit.transform == models[33])
+            {
+                return models[33];
+            }
+            else if (rayHit.transform == models[34])
+            {
+                return models[34];
+            }
+            else if (rayHit.transform == models[35])
+            {
+                return models[35];
+            }
+            else if (rayHit.transform == models[36])
+            {
+                return models[36];
+            }
+            else if (rayHit.transform == models[37])
+            {
+                return models[37];
+            }
+
+        }
 
 		return currentModel;
 	}
@@ -210,97 +359,1022 @@ public class ObjectController : MonoBehaviour
 	// returns the 1st active model
 	private Transform GetActiveModel()
 	{
-		if(model1 && model1.gameObject.activeSelf)
-			return model1;
-		else if(model2 && model2.gameObject.activeSelf)
-			return model2;
-		else if(model3 && model3.gameObject.activeSelf)
-			return model3;
+		if(models[0] && models[0].gameObject.activeSelf)
+			return models[0];
+		else if(models[1] && models[1].gameObject.activeSelf)
+			return models[1];
+		else if(models[2] && models[2].gameObject.activeSelf)
+			return models[2];
 
 		// no model is currently selected
 		return null;
 	}
 
-	// invoked by the 1st toggle
-	public void Toggle1Selected(bool bOn)
+
+    // invoked by the 1st toggle
+  
+    public void Modelado1(bool bOn)
 	{
-		if(model1)
+        int numero = 0;
+		if(models[numero])
 		{
 			if(!bOn)
 			{
 				// remove the world anchor
-				RemoveModelAnchor(model1);
+				RemoveModelAnchor(models[numero]);
 			}
 
 			// activate or deactivate the object
-			model1.gameObject.SetActive(bOn);
+			models[numero].gameObject.SetActive(bOn);
 
 			if(bOn)
 			{
 				// make it currently selected
-				currentModel = model1;
+				currentModel = models[numero];
                 anim.SetBool("UpOrDown", true);       
 			}
-			else if(currentModel == model1)
+			else if(currentModel == models[numero])
 			{
 				// if it was selected, reset the selection
 				currentModel = GetActiveModel();
 			}
 		}
 	}
+    public void Modelado2(bool bOn)
+    {
+        int numero = 1;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
 
-	// invoked by the 2nd toggle
-	public void Toggle2Selected(bool bOn)
-	{
-		if(model2)
-		{
-			if(!bOn)
-			{
-				// remove the world anchor
-				RemoveModelAnchor(model2);
-			}
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
 
-			// activate or deactivate the object
-			model2.gameObject.SetActive(bOn);
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado3(bool bOn)
+    {
+        int numero = 2;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
 
-			if(bOn)
-			{
-				// make it currently selected
-				currentModel = model2;
-			}
-			else if(currentModel == model2)
-			{
-				// if it was selected, reset the selection
-				currentModel = GetActiveModel();
-			}
-		}
-	}
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
 
-	// invoked by the 3rd toggle
-	public void Toggle3Selected(bool bOn)
-	{
-		if(model3)
-		{
-			if(!bOn)
-			{
-				// remove the world anchor
-				RemoveModelAnchor(model3);
-			}
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado4(bool bOn)
+    {
+        int numero = 3;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
 
-			// activate or deactivate the object
-			model3.gameObject.SetActive(bOn);
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
 
-			if(bOn)
-			{
-				// make it currently selected
-				currentModel = model3;
-			}
-			else if(currentModel == model3)
-			{
-				// if it was selected, reset the selection
-				currentModel = GetActiveModel();
-			}
-		}
-	}
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado5(bool bOn)
+    {
+        int numero = 4;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado6(bool bOn)
+    {
+        int numero = 5;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado7(bool bOn)
+    {
+        int numero = 6;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado8(bool bOn)
+    {
+        int numero = 7;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado9(bool bOn)
+    {
+        int numero = 8;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado10(bool bOn)
+    {
+        int numero = 9;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado11(bool bOn)
+    {
+        int numero = 10;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado12(bool bOn)
+    {
+        int numero = 11;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado13(bool bOn)
+    {
+        int numero = 12;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado14(bool bOn)
+    {
+        int numero = 13;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado15(bool bOn)
+    {
+        int numero = 14;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado16(bool bOn)
+    {
+        int numero = 15;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado17(bool bOn)
+    {
+        int numero = 16;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado18(bool bOn)
+    {
+        int numero = 17;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado19(bool bOn)
+    {
+        int numero = 18;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado20(bool bOn)
+    {
+        int numero = 19;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado21(bool bOn)
+    {
+        int numero = 20;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado22(bool bOn)
+    {
+        int numero = 21;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado23(bool bOn)
+    {
+        int numero = 22;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado24(bool bOn)
+    {
+        int numero = 23;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado25(bool bOn)
+    {
+        int numero = 24;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado26(bool bOn)
+    {
+        int numero = 25;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado27(bool bOn)
+    {
+        int numero = 26;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado28(bool bOn)
+    {
+        int numero = 27;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado29(bool bOn)
+    {
+        int numero = 28;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado30(bool bOn)
+    {
+        int numero = 29;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado31(bool bOn)
+    {
+        int numero = 30;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado32(bool bOn)
+    {
+        int numero = 31;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado33(bool bOn)
+    {
+        int numero = 32;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado34(bool bOn)
+    {
+        int numero = 33;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado35(bool bOn)
+    {
+        int numero = 34;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado36(bool bOn)
+    {
+        int numero = 35;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+    public void Modelado37(bool bOn)
+    {
+        int numero = 36;
+        if (models[numero])
+        {
+            if (!bOn)
+            {
+                // remove the world anchor
+                RemoveModelAnchor(models[numero]);
+            }
+
+            // activate or deactivate the object
+            models[numero].gameObject.SetActive(bOn);
+
+            if (bOn)
+            {
+                // make it currently selected
+                currentModel = models[numero];
+                anim.SetBool("UpOrDown", true);
+            }
+            else if (currentModel == models[numero])
+            {
+                // if it was selected, reset the selection
+                currentModel = GetActiveModel();
+            }
+        }
+    }
+
 
 }
+
+
+
