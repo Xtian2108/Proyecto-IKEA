@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectController : MonoBehaviour
 {
-    public Animator anim;
+    //public Animator anim;
     [Tooltip("Toggle for Model1.")]
     public Toggle[] toggles;
     [Tooltip("Transform of Model1, if any.")]
@@ -98,6 +98,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[0], models[0]);
         UpdateToggleStatus(toggles[1], models[1]);
         UpdateToggleStatus(toggles[2], models[2]);
+        /*
         UpdateToggleStatus(toggles[3], models[3]);
         UpdateToggleStatus(toggles[4], models[4]);
         UpdateToggleStatus(toggles[5], models[5]);
@@ -132,7 +133,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[34], models[34]);
         UpdateToggleStatus(toggles[35], models[35]);
         UpdateToggleStatus(toggles[36], models[36]);
-      
+      */
 
     }
 
@@ -202,6 +203,7 @@ public class ObjectController : MonoBehaviour
             {
                 return models[11];
             }
+            /*
             else if (rayHit.transform == models[12])
             {
                 return models[12];
@@ -306,7 +308,7 @@ public class ObjectController : MonoBehaviour
             {
                 return models[37];
             }
-
+            */
         }
 
 		return currentModel;
@@ -364,15 +366,16 @@ public class ObjectController : MonoBehaviour
 		}
 	}
 
-	// returns the 1st active model
-	private Transform GetActiveModel()
-	{
-		if(models[0] && models[0].gameObject.activeSelf)
-			return models[0];
-		else if(models[1] && models[1].gameObject.activeSelf)
-			return models[1];
-		else if(models[3] && models[3].gameObject.activeSelf)
-			return models[3];
+    // returns the 1st active model
+    private Transform GetActiveModel()
+    {
+        if (models[0] && models[0].gameObject.activeSelf)
+            return models[0];
+        else if (models[1] && models[1].gameObject.activeSelf)
+            return models[1];
+        else if (models[2] && models[2].gameObject.activeSelf)
+            return models[2];
+        
         else if (models[4] && models[4].gameObject.activeSelf)
             return models[4];
         else if (models[5] && models[5].gameObject.activeSelf)
@@ -389,6 +392,7 @@ public class ObjectController : MonoBehaviour
             return models[10];
         else if (models[11] && models[11].gameObject.activeSelf)
             return models[11];
+        /*
         else if (models[12] && models[12].gameObject.activeSelf)
             return models[12];
         else if (models[13] && models[13].gameObject.activeSelf)
@@ -439,7 +443,7 @@ public class ObjectController : MonoBehaviour
             return models[35];
         else if (models[36] && models[36].gameObject.activeSelf)
             return models[36];
-
+            */
         // no model is currently selected
         return null;
 	}
@@ -465,7 +469,7 @@ public class ObjectController : MonoBehaviour
 			{
 				// make it currently selected
 				currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);       
+              //  anim.SetBool("UpOrDown", true);       
 			}
 			else if(currentModel == models[numero])
 			{
@@ -492,7 +496,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+               // anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -519,7 +523,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -546,7 +550,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+               // anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -573,7 +577,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -600,7 +604,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -627,7 +631,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -654,7 +658,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -681,7 +685,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -708,7 +712,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+               // anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -735,7 +739,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -762,7 +766,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -789,7 +793,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -816,7 +820,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -843,7 +847,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -870,7 +874,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -897,7 +901,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -924,7 +928,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -951,7 +955,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -978,7 +982,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1005,7 +1009,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1032,7 +1036,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1059,7 +1063,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1086,7 +1090,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1113,7 +1117,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1140,7 +1144,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1167,7 +1171,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+           //     anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1194,7 +1198,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1221,7 +1225,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1248,7 +1252,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1275,7 +1279,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+           //     anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1302,7 +1306,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1329,7 +1333,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1356,7 +1360,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+              //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1383,7 +1387,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+             //   anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1410,7 +1414,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
@@ -1437,7 +1441,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
-                anim.SetBool("UpOrDown", true);
+            //    anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
             {
