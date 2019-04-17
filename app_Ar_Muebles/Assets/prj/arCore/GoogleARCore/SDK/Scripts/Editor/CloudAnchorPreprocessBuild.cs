@@ -58,7 +58,7 @@ namespace GoogleARCoreInternal
 
             if (string.IsNullOrEmpty(jdkPath))
             {
-                throw new BuildFailedException("A JDK path needs to be specified for the Android build.");
+                throw new BuildFailedException("A JDK path needs to be specified for the Android build");
             }
 
             bool cloudAnchorsEnabled = !string.IsNullOrEmpty(ARCoreProjectSettings.Instance.CloudServicesApiKey);

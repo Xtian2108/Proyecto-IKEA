@@ -7,8 +7,13 @@ public class AppController : MonoBehaviour
     public Animator anim;
     public bool b;
     public GameObject[] menus;
-    
-    
+    [SerializeField]
+    private ObjectController objController;
+
+    public void DeletedModel()
+    {
+        objController.currentModel.transform.gameObject.SetActive(false);
+    }
 
     public void SwipeDown()
     {

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectController : MonoBehaviour
 {
+    public GameObject uiCanvas;
     //public Animator anim;
     [Tooltip("Toggle for Model1.")]
     public Toggle[] toggles;
@@ -25,7 +26,7 @@ public class ObjectController : MonoBehaviour
     private MultiARManager arManager;
 
     // currently selected model
-    private Transform currentModel = null;
+    public Transform currentModel = null;
 
 
     void Start()
@@ -37,7 +38,7 @@ public class ObjectController : MonoBehaviour
         {
             infoText.text = "Please select a model.";
         }
-
+        /*
         if (toggles[0])
         {
             if (models[0])
@@ -46,7 +47,7 @@ public class ObjectController : MonoBehaviour
             }
 
             toggles[0].isOn = true;
-        }
+        }*/
     }
 
     void Update()
@@ -93,12 +94,16 @@ public class ObjectController : MonoBehaviour
         {
             infoText.text = currentModel ? "Selected: " + currentModel.gameObject.name : "No model selected";
         }
+        if (currentModel)
+        {
+           
+        }
 
         // turn off the toggles, if the respective models are not active
         UpdateToggleStatus(toggles[0], models[0]);
         UpdateToggleStatus(toggles[1], models[1]);
         UpdateToggleStatus(toggles[2], models[2]);
-        /*
+        
         UpdateToggleStatus(toggles[3], models[3]);
         UpdateToggleStatus(toggles[4], models[4]);
         UpdateToggleStatus(toggles[5], models[5]);
@@ -108,6 +113,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[9], models[9]);
         UpdateToggleStatus(toggles[10], models[10]);
         UpdateToggleStatus(toggles[11], models[11]);
+        /*
         UpdateToggleStatus(toggles[12], models[12]);
         UpdateToggleStatus(toggles[13], models[13]);
         UpdateToggleStatus(toggles[14], models[14]);
@@ -577,6 +583,7 @@ public class ObjectController : MonoBehaviour
             {
                 // make it currently selected
                 currentModel = models[numero];
+              
               //  anim.SetBool("UpOrDown", true);
             }
             else if (currentModel == models[numero])
