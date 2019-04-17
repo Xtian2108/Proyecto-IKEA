@@ -14,7 +14,7 @@ public class ObjectController : MonoBehaviour
    
 
     [Tooltip("Whether the virtual model should rotate at the AR-camera or not.")]
-    public bool modelLookingAtCamera = true;
+    public bool modelLookingAtCamera = false;
 
     [Tooltip("Whether the virtual model should be vertical, or orthogonal to the surface.")]
     public bool verticalModel = false;
@@ -38,23 +38,14 @@ public class ObjectController : MonoBehaviour
         {
             infoText.text = "Please select a model.";
         }
-        /*
-        if (toggles[0])
-        {
-            if (models[0])
-            {
-                models[0].position = new Vector3(0f, 0f, -10f);
-            }
 
-            toggles[0].isOn = true;
-        }*/
     }
 
     void Update()
     {
-        //		// don't consider taps over the UI
-        //		if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        //			return;
+      		// don't consider taps over the UI
+        		if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        			return;
 
         // check for tap
         if (arManager && arManager.IsInitialized() && arManager.IsInputAvailable(true))
@@ -84,7 +75,7 @@ public class ObjectController : MonoBehaviour
                     }
 
                     // set the new position of the model
-                    SetModelWorldPos(hit.point, !verticalModel ? hit.rotation : Quaternion.identity);
+                    SetModelWorldPos(hit.point, !verticalModel ? currentModel.rotation : Quaternion.identity);
                 }
             }
         }
@@ -99,6 +90,7 @@ public class ObjectController : MonoBehaviour
            
         }
 
+        #region updatetogglestatus
         // turn off the toggles, if the respective models are not active
         UpdateToggleStatus(toggles[0], models[0]);
         UpdateToggleStatus(toggles[1], models[1]);
@@ -140,6 +132,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[35], models[35]);
         UpdateToggleStatus(toggles[36], models[36]);
       */
+        #endregion
 
     }
 
@@ -329,11 +322,11 @@ public class ObjectController : MonoBehaviour
 			currentModel.position = vNewPos;
 			currentModel.rotation = qNewRot;
 
-			if (modelLookingAtCamera) 
-			{
-				Camera arCamera = arManager.GetMainCamera();
-				MultiARInterop.TurnObjectToCamera(currentModel.gameObject, arCamera, currentModel.position, currentModel.up);
-			}
+			//if (modelLookingAtCamera) 
+			//{
+			//	//Camera arCamera = arManager.GetMainCamera();
+			////	MultiARInterop.TurnObjectToCamera(currentModel.gameObject, arCamera, currentModel.position, currentModel.up);
+			//}
 
 			return true;
 		}
@@ -456,7 +449,7 @@ public class ObjectController : MonoBehaviour
 
 
     // invoked by the 1st toggle
-  
+    #region modelados
     public void Modelado1(bool bOn)
 	{
         int numero = 0;
@@ -1458,7 +1451,7 @@ public class ObjectController : MonoBehaviour
         }
     }
 
-
+    #endregion
 }
 
 
