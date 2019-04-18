@@ -8,6 +8,15 @@ public class EzRotate : MonoBehaviour, IDragHandler
 
     float rotationSpeed = 2f;
 
+    public MoverRotar paraUI;
+
+
+    public void Start()
+    {
+        paraUI = GameObject.Find("MoverRotar").GetComponent<MoverRotar>();    
+    }
+
+
     void OnMouseDrag()
     {
         
@@ -16,9 +25,13 @@ public class EzRotate : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        float XaxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
-        // select the axis by which you want to rotate the GameObject
-        transform.Rotate(Vector3.down, XaxisRotation);
+        if(paraUI.rotar == true)
+        {
+            float XaxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
+            // select the axis by which you want to rotate the GameObject
+            transform.Rotate(Vector3.zero, XaxisRotation);
+        }
+
     }
 }
 
