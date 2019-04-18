@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Mover : MonoBehaviour
 {
 
-    MoverRotar mr;
-    Toggle tog;
+    private MoverRotar mr;
+    private Toggle tog;
 
     void Start()
     {
