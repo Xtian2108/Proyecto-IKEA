@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1781040355299875289, guid: d61d2a4a2c4082148a645b78c459ce91,
         type: 3}
       propertyPath: m_Name
-      value: CanvasModelados
+      value: ParaModificar
       objectReference: {fileID: 0}
     - target: {fileID: 1781040355299875285, guid: d61d2a4a2c4082148a645b78c459ce91,
         type: 3}
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 1781040355299875285, guid: d61d2a4a2c4082148a645b78c459ce91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.774
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 1781040355299875285, guid: d61d2a4a2c4082148a645b78c459ce91,
         type: 3}
@@ -116,6 +116,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781040355738853733, guid: d61d2a4a2c4082148a645b78c459ce91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781040355738853733, guid: d61d2a4a2c4082148a645b78c459ce91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Borrar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781040355738853733, guid: d61d2a4a2c4082148a645b78c459ce91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781040355738853733, guid: d61d2a4a2c4082148a645b78c459ce91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781040355738853733, guid: d61d2a4a2c4082148a645b78c459ce91,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d61d2a4a2c4082148a645b78c459ce91, type: 3}

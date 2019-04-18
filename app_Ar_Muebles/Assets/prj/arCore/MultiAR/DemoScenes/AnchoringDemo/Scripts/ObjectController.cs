@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ObjectController : MonoBehaviour
 {
-    public GameObject uiCanvas;
     //public Animator anim;
     [Tooltip("Toggle for Model1.")]
     public Toggle[] toggles;
