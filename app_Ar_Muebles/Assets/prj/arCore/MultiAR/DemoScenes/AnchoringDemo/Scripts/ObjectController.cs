@@ -11,7 +11,8 @@ public class ObjectController : MonoBehaviour
     public Toggle[] toggles;
     [Tooltip("Transform of Model1, if any.")]
     public Transform[] models;
-   
+
+    public MoverRotar paraUI;
 
     [Tooltip("Whether the virtual model should rotate at the AR-camera or not.")]
     public bool modelLookingAtCamera = false;
@@ -39,13 +40,15 @@ public class ObjectController : MonoBehaviour
             infoText.text = "Please select a model.";
         }
 
+        paraUI = GameObject.Find("MoverRotar").GetComponent<MoverRotar>();
+
     }
 
     void Update()
     {
       		// don't consider taps over the UI
-        		if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        			return;
+        if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        return;
 
         // check for tap
         if (arManager && arManager.IsInitialized() && arManager.IsInputAvailable(true))
@@ -58,7 +61,9 @@ public class ObjectController : MonoBehaviour
                 if (currentModel == null)
                 {
                     Debug.LogError("No model selected!");
+                    paraUI.LimpiarBools();
                     return;
+
                 }
 
                 // update the currently selected model
@@ -74,8 +79,11 @@ public class ObjectController : MonoBehaviour
                         arManager.AnchorGameObjectToWorld(currentModel.gameObject, hit);
                     }
 
+                    if(paraUI.mover == true)
+                    {
+                        SetModelWorldPos(hit.point, !verticalModel ? currentModel.rotation : Quaternion.identity);
+                    }
                     // set the new position of the model
-                    SetModelWorldPos(hit.point, !verticalModel ? currentModel.rotation : Quaternion.identity);
                 }
             }
         }
