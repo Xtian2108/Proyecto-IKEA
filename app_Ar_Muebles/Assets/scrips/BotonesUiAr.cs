@@ -19,8 +19,8 @@ public class BotonesUiAr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 targetPos = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
-        transform.LookAt(targetPos);
+       // Vector3 targetPos = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
+       // transform.LookAt(targetPos);
     }
     
     

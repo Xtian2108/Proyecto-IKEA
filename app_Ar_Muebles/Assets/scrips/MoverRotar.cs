@@ -10,7 +10,7 @@ public class MoverRotar : MonoBehaviour
     public ObjectController obj;
     private void Start()
     {
-        obj = GameObject.Find("objcontroller").GetComponent<ObjectController>();
+        obj = GameObject.Find("ObjectController").GetComponent<ObjectController>();
     }
     public void Mover()
     {
@@ -31,6 +31,6 @@ public class MoverRotar : MonoBehaviour
     }
     public void Borrar()
     {
-        obj.currentModel.transform.gameObject.SetActive(false);
+        obj.currentModel.gameObject.SetActive(false);
     }
 }

@@ -29,7 +29,7 @@ public class EzRotate : MonoBehaviour, IDragHandler
         {
             float XaxisRotation = Input.GetAxis("Mouse X") * rotationSpeed;
             // select the axis by which you want to rotate the GameObject
-            transform.Rotate(Vector3.zero, XaxisRotation);
+            transform.Rotate(Vector3.down, XaxisRotation);
         }
 
     }
