@@ -9,16 +9,19 @@ public class MoverRotar : MonoBehaviour
     public bool mover;
     public bool rotar;
     public ObjectController obj;
+    private EzRotate ezr;
 
     private void Start()
     {
         obj = GameObject.Find("ObjectController").GetComponent<ObjectController>();
+        Mover();
     }
 
 
     public void Mover()
     {
-        if(mover == true)
+        obj.currentModel.GetComponent<EzRotate>().box.enabled = false;
+        if (mover == true)
         {
             mover = false;
         }
@@ -32,7 +35,8 @@ public class MoverRotar : MonoBehaviour
 
     public void Rotar()
     {
-        if(rotar == true)
+        obj.currentModel.GetComponent<EzRotate>().box.enabled = true;
+        if (rotar == true)
         {
             rotar = false;
         }
