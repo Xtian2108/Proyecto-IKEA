@@ -62,9 +62,6 @@ public class ObjectController : MonoBehaviour
       		// don't consider taps over the UI
         if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         return;
-<<<<<<< HEAD
->>>>>>> parent of 8b383c8... act casifinal
-=======
 >>>>>>> parent of 8b383c8... act casifinal
 
         // check for tap
@@ -128,11 +125,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[10], models[10]);
         UpdateToggleStatus(toggles[11], models[11]);
 <<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-        /*
->>>>>>> parent of 8b383c8... act casifinal
 =======
         /*
 >>>>>>> parent of 8b383c8... act casifinal
@@ -162,12 +155,9 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[35], models[35]);
         UpdateToggleStatus(toggles[36], models[36]);
 <<<<<<< HEAD
-<<<<<<< HEAD
 
         //#endregion
 =======
-=======
->>>>>>> parent of 8b383c8... act casifinal
       */
         #endregion
 >>>>>>> parent of 8b383c8... act casifinal
@@ -243,11 +233,7 @@ public class ObjectController : MonoBehaviour
                 return models[11];
             }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-            /*
->>>>>>> parent of 8b383c8... act casifinal
 =======
             /*
 >>>>>>> parent of 8b383c8... act casifinal
@@ -352,23 +338,17 @@ public class ObjectController : MonoBehaviour
                 return models[36];
             }
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 
             #endregion
 
 
 =======
-=======
->>>>>>> parent of 8b383c8... act casifinal
             else if (rayHit.transform == models[37])
             {
                 return models[37];
             }
             */
-<<<<<<< HEAD
->>>>>>> parent of 8b383c8... act casifinal
-=======
 >>>>>>> parent of 8b383c8... act casifinal
         }
 
@@ -577,9 +557,6 @@ public class ObjectController : MonoBehaviour
         else if (models[36] && models[36].gameObject.activeSelf)
             return models[36];
             */
-<<<<<<< HEAD
->>>>>>> parent of 8b383c8... act casifinal
-=======
 >>>>>>> parent of 8b383c8... act casifinal
         // no model is currently selected
         return null;
