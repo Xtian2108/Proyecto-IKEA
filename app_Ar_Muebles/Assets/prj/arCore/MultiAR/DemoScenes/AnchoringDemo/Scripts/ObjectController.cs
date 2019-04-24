@@ -51,18 +51,12 @@ public class ObjectController : MonoBehaviour
     }
     void Update()
     {
-<<<<<<< HEAD
         // don't consider taps over the UI
 
         //if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(touch.fingerId))
         //{
         //    return;
         //}
-=======
-      		// don't consider taps over the UI
-        if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        return;
->>>>>>> parent of 8b383c8... act casifinal
 
         // check for tap
         if (arManager && arManager.IsInitialized() && arManager.IsInputAvailable(true))
@@ -124,11 +118,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[9], models[9]);
         UpdateToggleStatus(toggles[10], models[10]);
         UpdateToggleStatus(toggles[11], models[11]);
-<<<<<<< HEAD
 
-=======
-        /*
->>>>>>> parent of 8b383c8... act casifinal
         UpdateToggleStatus(toggles[12], models[12]);
         UpdateToggleStatus(toggles[13], models[13]);
         UpdateToggleStatus(toggles[14], models[14]);
@@ -154,13 +144,8 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[34], models[34]);
         UpdateToggleStatus(toggles[35], models[35]);
         UpdateToggleStatus(toggles[36], models[36]);
-<<<<<<< HEAD
 
         //#endregion
-=======
-      */
-        #endregion
->>>>>>> parent of 8b383c8... act casifinal
 
     }
 
@@ -232,11 +217,7 @@ public class ObjectController : MonoBehaviour
             {
                 return models[11];
             }
-<<<<<<< HEAD
 
-=======
-            /*
->>>>>>> parent of 8b383c8... act casifinal
             else if (rayHit.transform == models[12])
             {
                 return models[12];
@@ -337,19 +318,11 @@ public class ObjectController : MonoBehaviour
             {
                 return models[36];
             }
-<<<<<<< HEAD
 
 
             #endregion
 
 
-=======
-            else if (rayHit.transform == models[37])
-            {
-                return models[37];
-            }
-            */
->>>>>>> parent of 8b383c8... act casifinal
         }
 
         return currentModel;
@@ -416,7 +389,6 @@ public class ObjectController : MonoBehaviour
             return models[1];
         else if (models[2] && models[2].gameObject.activeSelf)
             return models[2];
-<<<<<<< HEAD
         else if (models[3] && models[3].gameObject.activeSelf)
             return models[3];
         //else if (models[4] && models[4].gameObject.activeSelf)
@@ -487,77 +459,6 @@ public class ObjectController : MonoBehaviour
         //else if (models[36] && models[36].gameObject.activeSelf)
         //    return models[36];
 
-=======
-        
-        else if (models[4] && models[4].gameObject.activeSelf)
-            return models[4];
-        else if (models[5] && models[5].gameObject.activeSelf)
-            return models[5];
-        else if (models[6] && models[6].gameObject.activeSelf)
-            return models[6];
-        else if (models[7] && models[7].gameObject.activeSelf)
-            return models[7];
-        else if (models[8] && models[8].gameObject.activeSelf)
-            return models[8];
-        else if (models[9] && models[9].gameObject.activeSelf)
-            return models[9];
-        else if (models[10] && models[10].gameObject.activeSelf)
-            return models[10];
-        else if (models[11] && models[11].gameObject.activeSelf)
-            return models[11];
-        /*
-        else if (models[12] && models[12].gameObject.activeSelf)
-            return models[12];
-        else if (models[13] && models[13].gameObject.activeSelf)
-            return models[13];
-        else if (models[14] && models[14].gameObject.activeSelf)
-            return models[14];
-        else if (models[15] && models[15].gameObject.activeSelf)
-            return models[15];
-        else if (models[16] && models[16].gameObject.activeSelf)
-            return models[16];
-        else if (models[17] && models[17].gameObject.activeSelf)
-            return models[17];
-        else if (models[18] && models[18].gameObject.activeSelf)
-            return models[18];
-        else if (models[19] && models[19].gameObject.activeSelf)
-            return models[19];
-        else if (models[20] && models[20].gameObject.activeSelf)
-            return models[20];
-        else if (models[21] && models[21].gameObject.activeSelf)
-            return models[21];
-        else if (models[22] && models[22].gameObject.activeSelf)
-            return models[22];
-        else if (models[23] && models[23].gameObject.activeSelf)
-            return models[23];
-        else if (models[24] && models[24].gameObject.activeSelf)
-            return models[24];
-        else if (models[25] && models[25].gameObject.activeSelf)
-            return models[25];
-        else if (models[26] && models[26].gameObject.activeSelf)
-            return models[26];
-        else if (models[27] && models[27].gameObject.activeSelf)
-            return models[27];
-        else if (models[28] && models[28].gameObject.activeSelf)
-            return models[28];
-        else if (models[29] && models[29].gameObject.activeSelf)
-            return models[29];
-        else if (models[30] && models[30].gameObject.activeSelf)
-            return models[30];
-        else if (models[31] && models[31].gameObject.activeSelf)
-            return models[31];
-        else if (models[32] && models[32].gameObject.activeSelf)
-            return models[32];
-        else if (models[33] && models[33].gameObject.activeSelf)
-            return models[33];
-        else if (models[34] && models[34].gameObject.activeSelf)
-            return models[34];
-        else if (models[35] && models[35].gameObject.activeSelf)
-            return models[35];
-        else if (models[36] && models[36].gameObject.activeSelf)
-            return models[36];
-            */
->>>>>>> parent of 8b383c8... act casifinal
         // no model is currently selected
         return null;
 	}
