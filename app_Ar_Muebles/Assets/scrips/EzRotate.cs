@@ -9,11 +9,12 @@ public class EzRotate : MonoBehaviour, IDragHandler
     float rotationSpeed = 2f;
 
     public MoverRotar paraUI;
-
+    public BoxCollider box;
 
     public void Start()
     {
-        paraUI = GameObject.Find("MoverRotar").GetComponent<MoverRotar>();    
+        paraUI = GameObject.Find("MoverRotar").GetComponent<MoverRotar>();
+        box = GetComponent<BoxCollider>();
     }
 
 
