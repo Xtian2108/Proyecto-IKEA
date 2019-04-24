@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MultiARManager : MonoBehaviour 
 {
-
-    private Touch touch;
 	[Tooltip("The preferred AR platform, if available.")]
 	public MultiARInterop.ARPlatform preferredPlatform = MultiARInterop.ARPlatform.None;
 
@@ -1294,10 +1292,8 @@ public class MultiARManager : MonoBehaviour
 
 			if(showCursor == ShowCursorEnum.Always || hit.point != Vector3.zero)
 			{
-                
-                    MultiARInterop.ShowCursor(cursorObject, hit, 0.03f, 2f, 50f);
-
-            }
+				MultiARInterop.ShowCursor(cursorObject, hit, 0.03f, 2f, 50f);
+			}
 		}
 
 	}
