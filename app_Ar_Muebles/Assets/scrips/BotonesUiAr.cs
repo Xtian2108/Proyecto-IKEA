@@ -13,7 +13,7 @@ public class BotonesUiAr : MonoBehaviour
     private void Start()
     {
 
-        objController = GameObject.Find("objcontroller").GetComponent<ObjectController>();
+        objController = GameObject.Find("ObjectController").GetComponent<ObjectController>();
     }
 
     // Update is called once per frame

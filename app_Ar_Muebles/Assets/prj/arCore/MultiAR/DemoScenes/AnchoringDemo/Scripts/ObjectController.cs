@@ -47,7 +47,9 @@ public class ObjectController : MonoBehaviour
     {
       		// don't consider taps over the UI
         if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        return;
+        {
+            return;
+        }
 
         // check for tap
         if (arManager && arManager.IsInitialized() && arManager.IsInputAvailable(true))
@@ -112,7 +114,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[9], models[9]);
         UpdateToggleStatus(toggles[10], models[10]);
         UpdateToggleStatus(toggles[11], models[11]);
-        /*
+        
         UpdateToggleStatus(toggles[12], models[12]);
         UpdateToggleStatus(toggles[13], models[13]);
         UpdateToggleStatus(toggles[14], models[14]);
@@ -138,7 +140,7 @@ public class ObjectController : MonoBehaviour
         UpdateToggleStatus(toggles[34], models[34]);
         UpdateToggleStatus(toggles[35], models[35]);
         UpdateToggleStatus(toggles[36], models[36]);
-      */
+      
         #endregion
 
     }
@@ -209,7 +211,7 @@ public class ObjectController : MonoBehaviour
             {
                 return models[11];
             }
-            /*
+            
             else if (rayHit.transform == models[12])
             {
                 return models[12];
@@ -310,11 +312,8 @@ public class ObjectController : MonoBehaviour
             {
                 return models[36];
             }
-            else if (rayHit.transform == models[37])
-            {
-                return models[37];
-            }
-            */
+         
+            
         }
 
 		return currentModel;
@@ -398,7 +397,7 @@ public class ObjectController : MonoBehaviour
             return models[10];
         else if (models[11] && models[11].gameObject.activeSelf)
             return models[11];
-        /*
+        
         else if (models[12] && models[12].gameObject.activeSelf)
             return models[12];
         else if (models[13] && models[13].gameObject.activeSelf)
@@ -449,7 +448,7 @@ public class ObjectController : MonoBehaviour
             return models[35];
         else if (models[36] && models[36].gameObject.activeSelf)
             return models[36];
-            */
+            
         // no model is currently selected
         return null;
 	}
